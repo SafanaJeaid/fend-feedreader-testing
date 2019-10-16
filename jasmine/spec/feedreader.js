@@ -74,28 +74,35 @@ $(function() {
           */
           it('menu changes visibility when menu icon is clicked', function() {
             menuIcon = $('.menu-icon-link');
-            // menuIcon.on('click', function() {
-            //     expect($('body').hasClass('menu-hidden')).toBe(false);
-            // });
+            body = $('body');
             menuIcon.click();
-            expect($('body').hasClass('menu-hidden')).toBe(false);
+            expect(body.hasClass('menu-hidden')).toBe(false);
 
             menuIcon.click();
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect(body.hasClass('menu-hidden')).toBe(true);
           });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('initial Entries', function() {
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+         // TODO: Write a test that ensures when the loadFeed
+         // * function is called and completes its work, there is at least
+         // * a single .entry element within the .feed container.
+         // * Remember, loadFeed() is asynchronous so this test will require
+         // * the use of Jasmine's beforeEach and asynchronous done() function.
+         
+        beforeEach(function (done) {
+            loadFeed(0, done);
+        });
 
+        it('loadFeed is called and done and has at least one entry', function() {
+            entry = $('.feed .entry');
+            expect(entry.length).toBeGreaterThan(0);
+        });
+    });
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
