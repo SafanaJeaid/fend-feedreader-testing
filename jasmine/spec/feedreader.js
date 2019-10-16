@@ -74,9 +74,14 @@ $(function() {
           */
           it('menu changes visibility when menu icon is clicked', function() {
             menuIcon = $('.menu-icon-link');
-            menuIcon.on('click', function() {
-                expect($('body').toggleClass('menu-hidden',addOrRemove)).toBe(true);
-            });
+            // menuIcon.on('click', function() {
+            //     expect($('body').hasClass('menu-hidden')).toBe(false);
+            // });
+            menuIcon.click();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+
+            menuIcon.click();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
           });
     });
 
